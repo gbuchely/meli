@@ -1,0 +1,46 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2020-09-17 16:50
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: gbuchely
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+CREATE TABLE IF NOT EXISTS `meli`.`item` (
+  `item_id` VARCHAR(64) NOT NULL,
+  `title` VARCHAR(256) NULL DEFAULT NULL,
+  `category_id` VARCHAR(256) NULL DEFAULT NULL,
+  `price` VARCHAR(64) NULL DEFAULT NULL,
+  `start_time` DATETIME NULL DEFAULT NULL,
+  `stop_time` DATETIME NULL DEFAULT NULL,
+  `last_modification` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`item_id`),
+  UNIQUE INDEX `item_id_UNIQUE` (`item_id` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS `meli`.`children` (
+  `children_id` VARCHAR(64) NOT NULL,
+  `stop_time` DATETIME NULL DEFAULT NULL,
+  `item_id` VARCHAR(64) NOT NULL,
+  PRIMARY KEY (`children_id`, `item_id`),
+  UNIQUE INDEX `item_id_UNIQUE` (`children_id` ASC) VISIBLE,
+  INDEX `fk_children_item_idx` (`item_id` ASC) VISIBLE,
+  CONSTRAINT `fk_children_item`
+    FOREIGN KEY (`item_id`)
+    REFERENCES `meli`.`item` (`item_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
