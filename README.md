@@ -76,21 +76,21 @@ $ curl -X GET "http://localhost:8080/health"
 Debe tener en cuenta las siguientes propiedades de negocio en el YAML (application.yml):
 
 >API de Mercado Libre para consulta items:
-external.uri.items: https://api.mercadolibre.com/items/{0}
+- external.uri.items: https://api.mercadolibre.com/items/{0}
 
 >API de Mercado Libre para consultar los hijos de los Items:
-external.uri.children: https://api.mercadolibre.com/items/{0}/children
+- external.uri.children: https://api.mercadolibre.com/items/{0}/children
 
 >Formato de Fecha para transformaciones:
-external.date.pattern: yyyy-MM-dd'T'HH:mm:ss.SSS
+- external.date.pattern: yyyy-MM-dd'T'HH:mm:ss.SSS
 
 >Número total de últimos slots de tiempo con datos para el servicio de Health Check:
-external.health.slots: 5
+- external.health.slots: 5
 
-Tiempo en segundos del slot:
->external.health.split: 60
+>Tiempo en segundos del slot:
+- external.health.split: 60
 
-** Por defecto la API publica (pull) los últimos 5 minutos con slots de datos consolidados durante un 1 minuto.
+** Por defecto la API pública (pull) los últimos 5 minutos con slots de datos consolidados durante un 1 minuto.
 
 
 ## Propuestas de Mejora / Cambio
