@@ -1,6 +1,6 @@
 -- MySQL Workbench Synchronization
 -- Generated: 2020-09-17 16:50
--- Model: New Model
+-- Model: Meli
 -- Version: 1.0
 -- Project: Name of the project
 -- Author: gbuchely

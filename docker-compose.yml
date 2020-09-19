@@ -2,10 +2,29 @@ version: '3'
 
 services:
 
-  mysql-prod:
+  mysql-meli:
     image: mysql:8.0.17
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: meli
     ports:
       - "3306:3306"
+    ## healthcheck:
+    ##   test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
+    ##   interval: 2s
+    ##   timeout: 20s
+    ##   retries: 10
+
+  ## items-api:
+  ##   restart: on-failure
+  ##   build: ./
+  ##   expose:
+  ##     - "8080"
+  ##   ports:
+  ##     - "8080:8080"
+  ##   environment:
+  ##     WAIT_HOSTS: mysql:3306
+  ##   depends_on:
+  ##     - mysql-meli

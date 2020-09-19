@@ -12,6 +12,7 @@ external:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/meli
+    ## url: jdbc:mysql://mysql-meli:3306/meli
     username: root
     password: root
   jpa:
