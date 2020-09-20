@@ -47,7 +47,7 @@ public class DataService {
         itemDTO.setStopTime(item.getStopTime());
 
         List<Children> childrenList =
-                childrenRepository.findAll(); // TODO Search by ID
+                childrenRepository.findByItemId(item);
 
         itemDTO.setChildren(
                 childrenList
